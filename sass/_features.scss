@@ -1,0 +1,46 @@
+.features {
+  grid-column: center-start/ center-end;
+  // grid-row: 1 /-1;
+
+  @supports (display: grid) {
+    margin: 15rem 0;
+
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(25rem, 1fr)
+    ); // daca scriem asa fata de varianta de mai sus facem coloanele responsive
+    grid-gap: 6rem;
+    align-items: start; // aliniem fiecare element in  partea de sus
+  }
+}
+
+.feature {
+  // scriere veche pt IE
+  float: left;
+  width: 33.333%;
+  margin-bottom: 6rem;
+
+  @supports (display: grid) {
+    width: auto;
+    margin-bottom: 0;
+    //float // este ignorat
+  }
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem;
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    grid-row: 1 / span 2; // daca am fi pus -1 ( sa meraga pana la final), n-ar fi functionat pt ca -1 se refera doar la griduri explicite, iar aici nu avem.
+    transform: translateY(-1rem);
+  }
+  &__text {
+    font-size: 1.7rem;
+  }
+}
